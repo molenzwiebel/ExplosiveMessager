@@ -1,9 +1,9 @@
-package com.explosivenetwork.ExplosiveMessenger.Client;
+package altitude.crosscommunication.client;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import com.explosivenetwork.ExplosiveMessenger.Packets.IPacket;
+import altitude.crosscommunication.packets.IPacket;
 
 public class PacketReceivedEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
