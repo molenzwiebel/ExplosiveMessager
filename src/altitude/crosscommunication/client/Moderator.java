@@ -9,11 +9,11 @@ import altitude.crosscommunication.packets.AdminChatPacket;
 import altitude.crosscommunication.packets.IPacket;
 import altitude.crosscommunication.packets.InfractionPacket;
 
-public class ExplosiveMessenger extends JavaPlugin implements Listener {
+public class Moderator extends JavaPlugin implements Listener {
+    private static Moderator instance;
+    
+    //START OF CROSS SERVER STUFF
     public static ClientThread thread;
-    private static ExplosiveMessenger instance;
-    public static String NAME;
-
     public static void connect(String hostName) {
         thread = new ClientThread(instance, hostName);
     }
@@ -21,10 +21,10 @@ public class ExplosiveMessenger extends JavaPlugin implements Listener {
     public static void sendPacket(IPacket p) {
         thread.write(p);
     }
+    //END OF CROSS SERVER STUFF
 
     @Override
     public void onEnable() {
-        instance = this;
         Bukkit.getPluginManager().registerEvents(this, this);
         connect("localhost");
     }

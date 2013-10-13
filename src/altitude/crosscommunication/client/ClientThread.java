@@ -17,10 +17,10 @@ public class ClientThread extends Thread {
     public DataInputStream in = null;
     public boolean connected = false;
 
-    public ExplosiveMessenger plugin;
+    public Moderator plugin;
     private String hostName;
 
-    public ClientThread(ExplosiveMessenger plugin, String hostname) {
+    public ClientThread(Moderator plugin, String hostname) {
         this.plugin = plugin;
         this.hostName = hostname;
         this.start();
@@ -34,11 +34,11 @@ public class ClientThread extends Thread {
             in = new DataInputStream(socket.getInputStream());
         } catch (UnknownHostException e) {
             System.out.println("Chat server: Unknown host");
-            ExplosiveMessenger.thread = null;
+            Moderator.thread = null;
             return;
         } catch (IOException e) {
             System.out.println("Couldn't connect to chat server");
-            ExplosiveMessenger.thread = null;
+            Moderator.thread = null;
             return;
         }
 
@@ -49,7 +49,7 @@ public class ClientThread extends Thread {
             while (loop(in, out));
         } catch (Exception e) {
             System.out.println("Chat server: connection lost?");
-            ExplosiveMessenger.thread = null;
+            Moderator.thread = null;
             return;
         } finally {
             try {
@@ -63,7 +63,7 @@ public class ClientThread extends Thread {
                 System.out.println("Error closing socket");
             }
         }
-        ExplosiveMessenger.thread = null;
+        Moderator.thread = null;
     }
 
     public boolean loop(DataInputStream in, DataOutputStream out) throws Exception {
@@ -83,7 +83,7 @@ public class ClientThread extends Thread {
         } catch (IOException e) {
             System.out.println("Error writing packet " + packet.getClass() + ". Stack Trace Below:");
             System.out.println(e.getMessage());
-            ExplosiveMessenger.thread = null;
+            Moderator.thread = null;
             try {
                 socket.close();
             } catch (IOException e1) {

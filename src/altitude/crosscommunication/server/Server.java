@@ -14,8 +14,7 @@ public class Server {
     public static BufferedWriter general_log;
     public static BufferedWriter chat_log;
 
-    public static void start() throws IOException {
-        int port = 51326;
+    public static void start(int port) throws IOException {
         threads = new ArrayList<ServerThread>();
 
         System.out.println("Moderator cross-server chat server");
@@ -54,7 +53,10 @@ public class Server {
 
     public static void main(String... args) {
         try {
-            start();
+            if (args.length == 1)
+                start(Integer.parseInt(args[0]));
+            else
+                start(51326);
         } catch (Exception e) { e.printStackTrace(); }
     }
 }
