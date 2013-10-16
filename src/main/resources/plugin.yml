@@ -1,0 +1,5 @@
+name: ${name}
+main: ${plugin.mainClass}
+version: ${project.version}
+author: skipperguy12
+prefix: ${plugin.prefix}
