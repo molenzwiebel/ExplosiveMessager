@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.troid</groupId>
-  <artifactId>TPermissions</artifactId>
+  <artifactId>ServerDataCrosser</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>TPermissions</name>
-  <description>A permissions plugin for Troid servers</description>
+  <name>ServerDataCrosser</name>
+  <description>Cross server packet handler</description>
 
    <!-- Repositories -->
    <repositories>
@@ -101,6 +101,20 @@
             </configuration>
 
          </plugin>
+		  <!-- Build an executable JAR -->
+		 <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+				<archive>
+					<manifest>
+						<addClasspath>true</addClasspath>
+						<classpathPrefix>lib/</classpathPrefix>
+						<mainClass>com.github.troid.ServerDataCrosser.server.Server</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
 
          <!-- Maven Shade plugin -->
          <plugin>
@@ -146,13 +160,5 @@
 
    </build>
 
-   <!-- Special Properties -->
-  <properties>
-        <!-- Project properties -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Plugin properties -->
-        <plugin.prefix>TPermissions</plugin.prefix>
-        <plugin.mainClass>com.github.troid.TPermissions.TPermissions</plugin.mainClass>
-  </properties>
 
 </project>
