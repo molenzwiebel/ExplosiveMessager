@@ -1,0 +1,5 @@
+name: ServerDataCrosser
+main: ${plugin.mainClass}
+version: 0.0.1-SNAPSHOT
+author: skipperguy12
+prefix: ${plugin.prefix}
